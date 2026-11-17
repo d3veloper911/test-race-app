@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="theme-color" content="#0a0616" />
+<title>APEX RUSH — Neon Highway Racer</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="game"></canvas>
+  <div id="vignette"></div>
+  <div id="hitflash"></div>
+
+  <!-- ================= HUD ================= -->
+  <div id="hud">
+    <div class="topbar">
+      <div class="hudbox">
+        <span class="lbl">LAP</span>
+        <span class="val"><b id="hLap">1</b><i>/3</i></span>
+      </div>
+      <div class="hudbox center">
+        <span class="lbl">LAP TIME</span>
+        <span class="val mono" id="hTime">0:00.00</span>
+        <span class="sub">BEST <b class="mono" id="hBest">--:--.--</b></span>
+      </div>
+      <div class="hudbox right">
+        <span class="lbl">SPEED</span>
+        <span class="val mono" id="hSpeed">0</span>
+        <span class="sub">KM/H</span>
+        <div class="speedbar"><i id="hSpeedFill"></i></div>
+      </div>
+    </div>
+
+    <div class="bottombar">
+      <div class="nitrobox">
+        <div class="lbl">NITRO <span id="hNitro">100%</span></div>
+        <div class="bar"><i id="hNitroFill"></i></div>
+        <div class="hint">HOLD <kbd>SHIFT</kbd> / <kbd>SPACE</kbd></div>
+      </div>
+      <div class="hudbtns">
+        <button id="btnMute" class="iconbtn" title="Mute (M)">♪</button>
+        <button id="btnPause" class="iconbtn" title="Pause (P)">❚❚</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= TOUCH ================= -->
+  <div id="touch">
+    <div class="tgroup">
+      <button class="tbtn" id="tLeft" aria-label="steer left">◀</button>
+      <button class="tbtn" id="tRight" aria-label="steer right">▶</button>
+    </div>
+    <div class="tgroup right">
+      <button class="tbtn small" id="tBrake" aria-label="brake">BRAKE</button>
+      <button class="tbtn nitro" id="tBoost" aria-label="nitro">NITRO</button>
+    </div>
+  </div>
+
+  <!-- ================= MENU ================= -->
+  <div class="overlay" id="menu">
+    <div class="card">
+      <div class="kicker">NEON HIGHWAY &nbsp;//&nbsp; 3 LAPS</div>
+      <h1>APEX<span>RUSH</span></h1>
+      <p class="tag">Chase the sunset. Weave through traffic. Burn the nitro.</p>
+      <button class="btn primary" id="startBtn">START RACE</button>
+      <div class="keys">
+        <div><kbd>←</kbd><kbd>→</kbd> steer &nbsp;·&nbsp; <kbd>A</kbd><kbd>D</kbd></div>
+        <div><kbd>↑</kbd><kbd>W</kbd> gas &nbsp;·&nbsp; <kbd>↓</kbd><kbd>S</kbd> brake</div>
+        <div><kbd>SHIFT</kbd><kbd>SPACE</kbd> nitro &nbsp;·&nbsp; <kbd>P</kbd> pause</div>
+      </div>
+      <div class="best" id="menuBest">BEST LAP &nbsp;—</div>
+    </div>
+  </div>
+
+  <!-- ================= PAUSE ================= -->
+  <div class="overlay hidden" id="pause">
+    <div class="card">
+      <div class="kicker">SHORT BREATHER</div>
+      <h2>PAUSED</h2>
+      <div class="row">
+        <button class="btn primary" id="resumeBtn">RESUME</button>
+        <button class="btn ghost" id="restartBtn">RESTART</button>
+        <button class="btn ghost" id="quitBtn">MENU</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FINISH ================= -->
+  <div class="overlay hidden" id="finish">
+    <div class="card">
+      <div class="kicker">RACE COMPLETE</div>
+      <h2>FINISH</h2>
+      <div class="stats">
+        <div><span>TOTAL</span><b class="mono" id="fTotal">0:00.00</b></div>
+        <div><span>BEST LAP</span><b class="mono" id="fBest">0:00.00</b></div>
+        <div><span>TOP SPEED</span><b class="mono" id="fTop">0</b></div>
+      </div>
+      <div class="row">
+        <button class="btn primary" id="againBtn">RACE AGAIN</button>
+        <button class="btn ghost" id="menuBtn">MENU</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

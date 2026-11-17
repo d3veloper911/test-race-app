@@ -1,0 +1,10 @@
+{
+  "name": "apex-rush",
+  "version": "1.0.0",
+  "description": "APEX RUSH — a neon pseudo-3D arcade racer on plain Canvas 2D, zero dependencies.",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
