@@ -118,6 +118,7 @@ body.touch #vignette{background:radial-gradient(ellipse at 50% 42%,rgba(0,0,0,0)
   animation:fade .28s ease both;
 }
 .overlay.hidden{display:none}
+.hidden{display:none!important}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 .card{
   width:min(560px,100%);text-align:center;
@@ -182,4 +183,88 @@ kbd{
   .lbl{font-size:8.5px}
   .hint{display:none}
   .nitrobox{width:min(210px,46vw)}
+}
+
+/* ================= multiplayer ================= */
+.btn.wide{display:block;width:100%;margin-top:10px;padding:13px 20px;font-size:12px;letter-spacing:.2em}
+.field{display:block;text-align:left;margin:14px 0}
+.field span{display:block;font-size:9.5px;letter-spacing:.22em;color:#9b89bd;margin-bottom:6px}
+.field input{
+  width:100%;padding:12px 14px;border-radius:12px;font-family:var(--font);font-size:15px;
+  letter-spacing:.14em;text-transform:uppercase;color:#fff;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.field input:focus{border-color:rgba(56,232,255,.7);box-shadow:0 0 0 3px rgba(56,232,255,.12)}
+#codeInput{letter-spacing:.42em;font-size:22px;text-align:center;text-indent:.42em}
+.linkbtn{
+  background:none;border:0;color:#8f7cb3;font-family:var(--font);font-size:10.5px;
+  letter-spacing:.18em;margin-top:16px;cursor:pointer;text-decoration:underline;text-underline-offset:4px;
+}
+.linkbtn:hover{color:#e7dcff}
+.invite{display:flex;gap:8px;margin:14px 0 18px}
+.invite input{
+  flex:1;min-width:0;padding:11px 12px;border-radius:11px;color:#b9a8d8;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+  font-family:var(--font);font-size:10.5px;letter-spacing:.04em;outline:none;
+}
+.btn.tiny{padding:10px 14px;font-size:9.5px;letter-spacing:.14em;border-radius:11px;white-space:nowrap}
+.roomcode{letter-spacing:.2em;text-indent:.2em;margin-bottom:2px}
+.players{display:flex;flex-direction:column;gap:7px;margin-top:6px}
+.prow{
+  display:flex;align-items:center;gap:10px;padding:9px 13px;border-radius:11px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  font-size:13px;letter-spacing:.08em;color:#dcd2f5;
+}
+.prow .dot{width:10px;height:10px;border-radius:50%;box-shadow:0 0 12px currentColor;flex:none}
+.prow .tag{margin-left:auto;font-size:9px;letter-spacing:.18em;color:#ffd166}
+.prow.me{border-color:rgba(56,232,255,.4);background:rgba(56,232,255,.08)}
+.netstatus{font-size:10.5px;letter-spacing:.14em;color:#ff8aa5;margin-top:14px;min-height:14px;line-height:1.5}
+.netstatus.ok{color:#6bffc2}
+
+.standings{
+  position:fixed;top:142px;right:clamp(12px,3vw,36px);width:186px;
+  display:none;flex-direction:column;gap:3px;pointer-events:none;
+}
+.standings.on{display:flex}
+.srow{
+  display:flex;align-items:center;gap:8px;padding:5px 9px;border-radius:8px;
+  background:rgba(12,7,26,.5);border:1px solid rgba(255,255,255,.08);
+  font-size:11px;letter-spacing:.08em;backdrop-filter:blur(8px);
+}
+.srow b{color:#ffd166;min-width:11px;font-size:10px}
+.srow span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#dcd2f5}
+.srow i{font-style:normal;font-size:9px;color:#8f7cb3;letter-spacing:.1em}
+.srow.me{border-color:rgba(56,232,255,.5);background:rgba(56,232,255,.14)}
+.srow.me span{color:#fff}
+.srow.fin b{color:#6bffc2}
+body.touch .standings{top:146px}
+
+.mplist{display:none;flex-direction:column;gap:6px;margin:20px 0 4px;max-height:38vh;overflow:auto}
+.mplist.on{display:flex}
+.mrow{
+  display:flex;align-items:center;gap:10px;padding:9px 13px;border-radius:10px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:13px;
+}
+.mrow b{width:18px;color:#ffd166;font-size:11px}
+.mrow .nm{flex:1;text-align:left;letter-spacing:.08em}
+.mrow .tm{font-variant-numeric:tabular-nums;color:#b9a8d8;font-size:12px}
+.mrow.me{border-color:rgba(56,232,255,.5);background:rgba(56,232,255,.1)}
+.mrow.p1 b{color:#6bffc2}
+
+#toast{
+  position:fixed;left:50%;bottom:40px;transform:translate(-50%,18px);z-index:60;
+  padding:12px 20px;border-radius:12px;background:rgba(20,10,38,.94);
+  border:1px solid rgba(255,255,255,.16);font-size:11.5px;letter-spacing:.1em;color:#fff;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-width:80vw;text-align:center;
+}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:640px){
+  .standings{top:80px;right:9px;width:126px}
+  .srow{font-size:9px;padding:4px 6px;gap:5px}
+  .srow b{font-size:8.5px;min-width:9px}
+  .srow i{font-size:8px}
+  .btn.wide{padding:12px 16px;font-size:11px}
+  .invite{flex-direction:column}
 }

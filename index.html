@@ -10,7 +10,6 @@
     <title>APEX RUSH — Neon Highway Racer</title>
     <!-- <link rel="stylesheet" href="style.css" /> -->
     <link rel="stylesheet" href="./style.css" />
-    <script src="./game.js"></script>
   </head>
   <body>
     <canvas id="game"></canvas>
@@ -48,6 +47,8 @@
           <button id="btnPause" class="iconbtn" title="Pause (P)">❚❚</button>
         </div>
       </div>
+
+      <div id="standings" class="standings"></div>
     </div>
 
     <!-- ================= TOUCH ================= -->
@@ -71,6 +72,7 @@
           Chase the sunset. Weave through traffic. Burn the nitro.
         </p>
         <button class="btn primary" id="startBtn">START RACE</button>
+        <button class="btn ghost wide" id="friendsBtn">RACE WITH FRIENDS</button>
         <div class="keys">
           <div>
             <kbd>←</kbd><kbd>→</kbd> steer &nbsp;·&nbsp; <kbd>A</kbd
@@ -105,19 +107,73 @@
     <!-- ================= FINISH ================= -->
     <div class="overlay hidden" id="finish">
       <div class="card">
-        <div class="kicker">RACE COMPLETE</div>
+        <div class="kicker" id="finishKicker">RACE COMPLETE</div>
         <h2>FINISH</h2>
-        <div class="stats">
+        <div class="stats" id="soloStats">
           <div><span>TOTAL</span><b class="mono" id="fTotal">0:00.00</b></div>
           <div><span>BEST LAP</span><b class="mono" id="fBest">0:00.00</b></div>
           <div><span>TOP SPEED</span><b class="mono" id="fTop">0</b></div>
         </div>
-        <div class="row">
+        <div class="mplist" id="mpResults"></div>
+        <div class="row" id="soloActions">
           <button class="btn primary" id="againBtn">RACE AGAIN</button>
           <button class="btn ghost" id="menuBtn">MENU</button>
         </div>
+        <div class="row hidden" id="mpActions">
+          <button class="btn primary" id="lobbyReturn">BACK TO LOBBY</button>
+          <button class="btn ghost" id="leaveRoomBtn">LEAVE ROOM</button>
+        </div>
+        <div class="netstatus" id="finishStatus"></div>
       </div>
     </div>
+
+    <!-- ================= JOIN ROOM ================= -->
+    <div class="overlay hidden" id="join">
+      <div class="card">
+        <div class="kicker">ONLINE MULTIPLAYER</div>
+        <h2>RACE TOGETHER</h2>
+        <p class="tag">Create a room, send the link, and race head to head.</p>
+
+        <label class="field">
+          <span>YOUR NAME</span>
+          <input id="nameInput" maxlength="12" placeholder="PLAYER" autocomplete="off" spellcheck="false" />
+        </label>
+        <label class="field">
+          <span>ROOM CODE</span>
+          <input id="codeInput" maxlength="4" placeholder="ABCD" autocomplete="off" spellcheck="false" />
+        </label>
+
+        <div class="row">
+          <button class="btn primary" id="joinBtn">JOIN RACE</button>
+          <button class="btn ghost" id="createBtn">CREATE ROOM</button>
+        </div>
+        <button class="linkbtn" id="joinBack">← back to menu</button>
+        <div class="netstatus" id="joinStatus"></div>
+      </div>
+    </div>
+
+    <!-- ================= LOBBY ================= -->
+    <div class="overlay hidden" id="lobby">
+      <div class="card">
+        <div class="kicker">PRIVATE ROOM</div>
+        <h2 class="roomcode" id="lobbyCode">ABCD</h2>
+
+        <div class="invite">
+          <input id="inviteUrl" readonly />
+          <button class="btn ghost tiny" id="copyBtn">COPY LINK</button>
+        </div>
+
+        <div class="players" id="lobbyPlayers"></div>
+
+        <div class="row">
+          <button class="btn primary" id="lobbyStart">START RACE</button>
+          <button class="btn ghost" id="lobbyLeave">LEAVE</button>
+        </div>
+        <div class="netstatus" id="lobbyStatus"></div>
+      </div>
+    </div>
+
+    <div id="toast"></div>
 
     <script src="game.js"></script>
   </body>
